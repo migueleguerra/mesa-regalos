@@ -11,19 +11,47 @@ const SocialButton = ({
   children: ReactNode;
   href: string;
 }) => {
-  return <chakra.button href={href}>{children}</chakra.button>;
+  return (
+    <chakra.button
+      as="a"
+      href={href}
+      bg="blackAlpha.100"
+      rounded="full"
+      w="8"
+      h="8"
+      target="_blank"
+      cursor="pointer"
+      display="inline-flex"
+      alignItems="center"
+      justifyContent="center"
+      transition="background 0.3s ease"
+      _hover={{
+        bg: "blackAlpha.400",
+      }}
+    >
+      {children}
+    </chakra.button>
+  );
 };
 
 export default function Footer() {
   return (
     <Box>
-      <Container>
+      <Container
+        as={Stack}
+        maxWidth="container.lg"
+        py="4"
+        direction={{ base: "column", md: "row" }}
+        spacing="6"
+        justify={{ base: "center", md: "space-between" }}
+        align={{ base: "center", md: "center" }}
+      >
         <Text></Text>
-        <Stack>
-          <Text>
+        <Stack align="center" direction="row" spacing="4">
+          <Text fontSize="sm">
             <Link href="/">Terminos y Privacidad</Link>
           </Text>
-          <Text>
+          <Text fontSize="sm">
             <Link href="/">FAQ</Link>
           </Text>
           <SocialButton href="/">
@@ -43,7 +71,7 @@ export default function Footer() {
             fontSize="lg"
             fontWeight="bold"
           >
-            MiMesa.
+            MiMesa
           </Text>
         </Stack>
       </Container>
